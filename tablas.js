@@ -1,9 +1,24 @@
-document.getElementById("form").addEventListener("submit", (e) => {
+const form = document.getElementById("form");
+const numInput = document.getElementById("num");
+const radioTodas = document.getElementById("todas");
+const radioNumero = document.getElementById("numero");
+
+const toggleInput = () => {
+    const usarTodas = radioTodas.checked;
+    numInput.disabled = usarTodas;
+    if (usarTodas) {
+        numInput.value = "";
+    }
+};
+
+radioTodas.addEventListener("change", toggleInput);
+radioNumero.addEventListener("change", toggleInput);
+
+form.addEventListener("submit", (e) => {
     e.preventDefault();
 
     const resultado = document.getElementById("resultado");
-    const numInput = document.getElementById("num");
-    const todas = document.getElementById("todas").checked;
+    const todas = radioTodas.checked;
     const num = Number.parseInt(numInput.value, 10);
 
     resultado.innerHTML = "";
@@ -28,3 +43,13 @@ document.getElementById("form").addEventListener("submit", (e) => {
         resultado.innerHTML += `${num} &emsp;*&emsp; ${i} &emsp;*&emsp; ${num * i}<br>`;
     }
 });
+
+form.addEventListener("reset", () => {
+    setTimeout(() => {
+        radioTodas.checked = true;
+        toggleInput();
+        document.getElementById("resultado").innerHTML = "";
+    }, 0);
+});
+
+toggleInput();

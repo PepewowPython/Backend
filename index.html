@@ -11,11 +11,15 @@
     <div class="container py-4">
         <h2>Generador de Tablas</h2>
         <form id="form">
-            <input type="number" class="form-control w-50 mb-4" id="num" min="1" max="15" placeholder="Ingrese un número del 1 al 15">
             <div class="form-check mb-3">
                 <input class="form-check-input" type="radio" name="tabla" id="todas" value="all" checked>
                 <label class="form-check-label" for="todas">Todas</label>
             </div>
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="radio" name="tabla" id="numero" value="single">
+                <label class="form-check-label" for="numero">Número específico</label>
+            </div>
+            <input type="number" class="form-control w-50 mb-4" id="num" min="1" max="15" placeholder="Ingrese un número del 1 al 15" disabled>
             <div>
                 <button type="submit" class="btn btn-primary">Enviar</button>
                 <button type="reset" class="btn btn-secondary">Limpiar</button>
